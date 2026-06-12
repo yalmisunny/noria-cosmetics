@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN | 노리아 스토어</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&family=Noto+Serif+KR:wght@400;500;600&family=Marcellus&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- 1. 최상단 이벤트 배너 -->
+    <div class="top-notice">
+        <span>🎉 5만원 이상 구입시 무료배송 이벤트 진행중! 🎉</span>
+    </div>
+
+    <!-- 2. 헤더 -->
+    <header class="header">
+        <div class="logo">
+            <a href="index.html"><h1>NORIA <span class="logo-divider">|</span> <span class="logo-ko">노리아</span></h1></a>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html#about">Brand Story</a>
+            <a href="index.html#bestseller">Best Seller</a>
+            <a href="index.html#products">Beauty Collection</a>
+            <a href="index.html#reviews">Review</a>
+            <a href="event.html">Event</a>
+            <a href="cs_center.html">CS Center</a>
+        </nav>
+        <div class="header-icons">
+            <a href="login.html" title="LOGIN">
+                <!-- Login Icon -->
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+            </a>
+            <a href="mypage.html" title="MY PAGE">
+                <!-- User Icon -->
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </a>
+            <a href="cart.html" id="nav-cart-link" title="CART">
+                <!-- Shopping Bag Icon -->
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                <span id="nav-cart-count" class="cart-badge">0</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- 3. 로그인 폼 영역 -->
+    <section class="login-section">
+        <div class="login-container">
+            <h2 class="login-title">LOGIN</h2>
+            <form class="login-form" action="#" method="POST">
+                <div class="input-group">
+                    <input type="text" id="username" name="username" placeholder="아이디를 입력해주세요" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" name="password" placeholder="비밀번호를 입력해주세요" required>
+                </div>
+                <div class="login-options">
+                    <label class="save-id"><input type="checkbox"> 아이디 저장</label>
+                    <div class="find-links">
+                        <a href="#">아이디 찾기</a>
+                        <span>|</span>
+                        <a href="#">비밀번호 찾기</a>
+                    </div>
+                </div>
+                <button type="submit" class="login-btn">로그인</button>
+                <button type="button" class="login-btn btn-naver" onclick="alert('네이버 아이디로 로그인합니다!')">
+                    <span class="naver-logo">N</span> 네이버 간편 로그인
+                </button>
+                <div class="signup-link">
+                    아직 회원이 아니신가요? <a href="signup.html">회원가입</a>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- 4. 푸터 -->
+    <footer class="footer">
+        <div class="footer-info">
+            <h3>NORIA</h3>
+            <p>상호: 노리아 (NORIA) | 고객센터: 1588-0000</p>
+            <p>COPYRIGHT © NORIA. ALL RIGHTS RESERVED.</p>
+        </div>
+        <div class="footer-info text-right">
+            <p>교환/반품 안내</p>
+            <p>5만원 이상 구매 시 무료배송</p>
+            <div class="social-links">
+                <a href="https://blog.naver.com/yalmisunny" target="_blank" title="Naver Blog" class="social-icon naver-icon">N</a>
+                <a href="https://www.youtube.com/@%EA%B9%80%EC%B1%84%EC%97%B0-u4k/playlists" target="_blank" title="YouTube" class="social-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

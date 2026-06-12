@@ -3,17 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noria Cosmetics</title>
-    <link rel="stylesheet" href="style.css">
+    <title>NORIA | 노리아 스토어</title>
+    <!-- 폰트 적용: Noto Sans(본문), Noto Serif(명조), Marcellus(우아한 영문), Playfair(클래식 영문) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&family=Noto+Serif+KR:wght@400;500;600&family=Marcellus&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
-        <h1>Noria Cosmetics</h1>
-        <p>노리아 코스메틱 홈페이지에 오신 것을 환영합니다.</p>
+
+    <!-- 1. 최상단 이벤트 배너 -->
+    <div class="top-notice">
+        <span>🎉 5만원 이상 구입시 무료배송 이벤트 진행중! 🎉</span>
+    </div>
+
+    <!-- 2. 헤더 -->
+    <header class="header">
+        <div class="logo">
+            <a href="index.html"><h1>NORIA <span class="logo-divider">|</span> <span class="logo-ko">노리아</span></h1></a>
+        </div>
+        <nav class="nav-links">
+            <a href="#about">Brand Story</a>
+            <a href="#bestseller">Best Seller</a>
+            <a href="#products">Beauty Collection</a>
+            <a href="#reviews">Review</a>
+            <a href="event.html">Event</a>
+            <a href="cs_center.html">CS Center</a>
+        </nav>
+        <div class="header-icons">
+            <a href="login.html" title="LOGIN">
+                <!-- Login Icon -->
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+            </a>
+            <a href="mypage.html" title="MY PAGE">
+                <!-- User Icon -->
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </a>
+            <a href="cart.html" id="nav-cart-link" title="CART">
+                <!-- Shopping Bag Icon -->
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                <span id="nav-cart-count" class="cart-badge">0</span>
+            </a>
+        </div>
     </header>
-    <main>
-        <p>현재 홈페이지 제작 중입니다. 조금만 기다려주세요!</p>
-    </main>
-    <script src="main.js"></script>
+
+    <!-- 3. 메인 히어로 (고객님이 올려주신 모델 사진용) -->
+    <section class="hero">
+        <!-- 기존에 사용하시던 파란 눈의 모델 이미지 연결 (고객님이 폴더 전체를 복사하셨기 때문에 경로를 그에 맞게 수정했습니다!) -->
+        <img src="assets/images/noria_hero_model.png" alt="NORIA Main View">
+        <div class="hero-content">
+            <h2>NORIA</h2>
+            <p>자연이 준 빛을 당신의 삶에 그대로 담다.<br>본연의 아름다움을 깨우는 내추럴 뷰티, NORIA</p>
+            <a href="#products" class="hero-btn">Discover More</a>
+        </div>
+    </section>
+
+    <!-- 4. 브랜드 필름 영상 (Local) -->
+    <section id="brand-video" class="video-section">
+        <h2 class="section-title">NORIA BRAND FILM</h2>
+        <div class="video-container">
+            <video src="assets/images/노리아광고.mp4" autoplay loop playsinline controls></video>
+        </div>
+    </section>
+
+    <!-- 5. 브랜드 스토리 -->
+    <section id="about" class="story-section">
+        <h2 class="section-title">BRAND CONCEPT</h2>
+        <p>
+            <strong>NORIA</strong>는 natural(자연)과 Radiance(맑은 빛)을 결합한 의미로,<br>
+            "자연이 준 빛으로 본연의 아름다움을 일깨운다"는 철학을 담고 있습니다.<br><br>
+            단지 겉으로 보이는 피부를 넘어, 스킨케어부터 메이크업, 그리고 이너뷰티까지.<br>당신의 모든 일상을 건강하고 맑게 가꾸어주는 포괄적인 내추럴 뷰티 라이프스타일을 제안합니다.
+        </p>
+    </section>
+
+    <!-- 5. 베스트셀러 상품 (전용 섹션) -->
+    <section id="bestseller" class="products-section" style="background-color: #FAFAFA; padding-bottom: 3rem;">
+        <h2 class="section-title" style="margin-bottom: 1.5rem;">BEST SELLER</h2>
+        <div class="product-grid" id="bestseller-list-container">
+            <!-- Best Seller items will be generated dynamically by JS -->
+        </div>
+    </section>
+
+    <!-- 6. 전체 상품 리스트 -->
+    <section id="products" class="products-section">
+        <h2 class="section-title">BEAUTY COLLECTION</h2>
+        
+        <!-- Category Filters -->
+        <div class="product-filters" id="main-filters">
+            <button class="filter-btn active" data-filter="ALL">전체 보기</button>
+            <button class="filter-btn" data-filter="SKINCARE">스킨케어</button>
+            <button class="filter-btn" data-filter="MAKEUP">메이크업</button>
+        </div>
+
+        <!-- Sub Category Filters container -->
+        <div class="sub-product-filters" id="sub-filters" style="display: none;"></div>
+
+        <div class="product-grid" id="product-list-container">
+            <!-- Products will be generated dynamically by JS -->
+        </div>
+    </section>
+
+    <!-- 7. 고객 리뷰 섹션 -->
+    <section id="reviews" class="reviews-section">
+        <h2 class="section-title">REAL REVIEWS</h2>
+        <div class="review-grid">
+            <!-- Review 1 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-stars">★★★★★</div>
+                    <span class="review-date">2026.04.10</span>
+                </div>
+                <h3 class="review-title">은은하게 광이 나서 너무 좋아요!</h3>
+                <p class="review-text">파운데이션 찾다가 정착했어요. 너무 두껍지 않게 발리면서 자연스럽게 커버되고 하루종일 피부가 편안합니다. 재구매 의사 100% 에요.</p>
+                <div class="review-author">- 이지* 고객님</div>
+                <div class="review-product">
+                    <img src="https://images.unsplash.com/photo-1599305090598-fe179d501227?auto=format&fit=crop&q=80&w=150" alt="Product">
+                    <span>노리아 퍼펙팅 파운데이션</span>
+                </div>
+            </div>
+            <!-- Review 2 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-stars">★★★★★</div>
+                    <span class="review-date">2026.04.05</span>
+                </div>
+                <h3 class="review-title">진정 효과 대박이에요</h3>
+                <p class="review-text">요즘 환절기라 피부가 많이 예민해졌는데 센텔라 앰플 쓰고 나서 붉은기가 많이 가라앉았어요. 흡수력도 빠르고 끈적이지 않아서 밤낮으로 쓰기 완벽합니다.</p>
+                <div class="review-author">- 김하* 고객님</div>
+                <div class="review-product">
+                    <img src="assets/images/앰플병.png" alt="Product">
+                    <span>스킨1004 마다가스카르 센텔라 앰플</span>
+                </div>
+            </div>
+            <!-- Review 3 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-stars">★★★★☆</div>
+                    <span class="review-date">2026.03.28</span>
+                </div>
+                <h3 class="review-title">컬러가 너무 예뻐요</h3>
+                <p class="review-text">웜톤인데 얼굴에 형광등 켠 것처럼 색상이 찰떡입니다. 매트 립스틱인데도 발림성이 부드러워서 각질 부각 없이 예쁘게 발려요. 맘에 듭니다.</p>
+                <div class="review-author">- 박소* 고객님</div>
+                <div class="review-product">
+                    <img src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&q=80&w=150" alt="Product">
+                    <span>노리아 에센셜 매트 립스틱</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. 푸터 -->
+    <footer class="footer">
+        <div class="footer-info">
+            <h3>NORIA</h3>
+            <p>상호: 노리아 (NORIA) | 고객센터: 1588-0000</p>
+            <p>COPYRIGHT © NORIA. ALL RIGHTS RESERVED.</p>
+        </div>
+        <div class="footer-info text-right">
+            <p>교환/반품 안내</p>
+            <p>5만원 이상 구매 시 무료배송</p>
+            <div class="social-links">
+                <a href="https://blog.naver.com/yalmisunny" target="_blank" title="Naver Blog" class="social-icon naver-icon">N</a>
+                <a href="https://www.youtube.com/@%EA%B9%80%EC%B1%84%EC%97%B0-u4k/playlists" target="_blank" title="YouTube" class="social-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
 </body>
 </html>

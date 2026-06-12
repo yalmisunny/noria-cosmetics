@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CART | 노리아 스토어</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&family=Noto+Serif+KR:wght@400;500;600&family=Marcellus&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cart.css">
+</head>
+<body>
+
+    <!-- 1. 최상단 이벤트 배너 -->
+    <div class="top-notice">
+        <span>🎉 5만원 이상 구입시 무료배송 이벤트 진행중! 🎉</span>
+    </div>
+
+    <!-- 2. 헤더 -->
+    <header class="header">
+        <div class="logo">
+            <a href="index.html"><h1>NORIA <span class="logo-divider">|</span> <span class="logo-ko">노리아</span></h1></a>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html#about">Brand Story</a>
+            <a href="index.html#bestseller">Best Seller</a>
+            <a href="index.html#products">Beauty Collection</a>
+            <a href="index.html#reviews">Review</a>
+            <a href="event.html">Event</a>
+            <a href="cs_center.html">CS Center</a>
+        </nav>
+        <div class="header-icons">
+            <a href="login.html" title="LOGIN">
+                <!-- Login Icon -->
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+            </a>
+            <a href="mypage.html" title="MY PAGE">
+                <!-- User Icon -->
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </a>
+            <a href="cart.html" id="nav-cart-link" title="CART">
+                <!-- Shopping Bag Icon -->
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                <span id="nav-cart-count" class="cart-badge">0</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- 3. 장바구니 영역 -->
+    <section class="cart-section">
+        <div class="cart-container">
+            <h2 class="cart-title">SHOPPING CART</h2>
+            
+            <div class="cart-table-wrap">
+                <table class="cart-table">
+                    <thead>
+                        <tr>
+                            <th class="col-img">상품이미지</th>
+                            <th class="col-info">상품정보</th>
+                            <th class="col-price">판매가</th>
+                            <th class="col-qty">수량</th>
+                            <th class="col-total">합계금액</th>
+                            <th class="col-btn">선택</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart-item-list">
+                        <!-- 장바구니 아이템 렌더링 -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="cart-summary">
+                <div class="summary-box">
+                    <span>총 상품금액</span>
+                    <strong id="cart-total-price">0원</strong>
+                </div>
+                <div class="summary-operator">+</div>
+                <div class="summary-box">
+                    <span>배송비</span>
+                    <strong id="cart-shipping-fee">0원</strong>
+                </div>
+                <div class="summary-operator">=</div>
+                <div class="summary-box total-box">
+                    <span>결제예정금액</span>
+                    <strong id="cart-final-price">0원</strong>
+                </div>
+            </div>
+
+            <div class="cart-actions">
+                <a href="index.html" class="btn btn-outline">계속 쇼핑하기</a>
+                <button class="btn btn-solid" onclick="checkout()">주문하기</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 푸터 -->
+    <footer class="footer">
+        <div class="footer-info">
+            <h3>NORIA</h3>
+            <p>상호: 노리아 (NORIA) | 고객센터: 1588-0000</p>
+            <p>COPYRIGHT © NORIA. ALL RIGHTS RESERVED.</p>
+        </div>
+        <div class="footer-info">
+            <p>교환/반품 안내</p>
+            <p>5만원 이상 구매 시 무료배송</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY PAGE | 노리아 스토어</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&family=Noto+Serif+KR:wght@400;500;600&family=Marcellus&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cart.css"> <!-- 주문 내역 테이블 뷰 재활용 -->
+    <link rel="stylesheet" href="css/mypage.css">
+</head>
+<body>
+
+    <!-- 1. 최상단 이벤트 배너 -->
+    <div class="top-notice">
+        <span>🎉 5만원 이상 구입시 무료배송 이벤트 진행중! 🎉</span>
+    </div>
+
+    <!-- 2. 헤더 -->
+    <header class="header">
+        <div class="logo">
+            <a href="index.html"><h1>NORIA <span class="logo-divider">|</span> <span class="logo-ko">노리아</span></h1></a>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html#about">Brand Story</a>
+            <a href="index.html#bestseller">Best Seller</a>
+            <a href="index.html#products">Beauty Collection</a>
+            <a href="index.html#reviews">Review</a>
+            <a href="event.html">Event</a>
+            <a href="cs_center.html">CS Center</a>
+        </nav>
+        <div class="header-icons">
+            <a href="login.html" title="LOGIN">
+                <!-- Login Icon -->
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+            </a>
+            <a href="mypage.html" title="MY PAGE">
+                <!-- User Icon -->
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </a>
+            <a href="cart.html" id="nav-cart-link" title="CART">
+                <!-- Shopping Bag Icon -->
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                <span id="nav-cart-count" class="cart-badge">0</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- 3. 마이페이지 2단 영역 -->
+    <div class="mypage-wrap">
+        
+        <!-- 왼쪽 사이드바 (LNB) -->
+        <aside class="mypage-sidebar">
+            <h2>MY PAGE</h2>
+            <ul class="mypage-nav">
+                <li><a href="#" class="mypage-nav-link active" data-target="panel-dashboard">주문/배송 조회</a></li>
+                <li><a href="#" class="mypage-nav-link" data-target="panel-benefits">나의 혜택 (쿠폰/포인트)</a></li>
+                <li><a href="#" class="mypage-nav-link" data-target="panel-wishlist">관심 상품 목록</a></li>
+                <li><a href="#" class="mypage-nav-link" data-target="panel-qna">1:1 문의 내역</a></li>
+                <li><a href="#" class="mypage-nav-link" data-target="panel-profile">회원 정보 수정</a></li>
+            </ul>
+        </aside>
+
+        <!-- 오른쪽 메인 콘텐츠 -->
+        <main class="mypage-content">
+            
+            <!-- (1) 주 콘텐츠: 주문/배송 조회 패널 -->
+            <section id="panel-dashboard" class="tab-panel active">
+                
+                <!-- 상단 고객 정보/혜택 요약 -->
+                <div class="dashboard-summary">
+                    <div class="summary-card">
+                        <span>회원 등급</span>
+                        <strong>V.I.P</strong>
+                    </div>
+                    <div class="summary-card">
+                        <span>사용 가능 적립금</span>
+                        <strong>15,000 P</strong>
+                    </div>
+                    <div class="summary-card">
+                        <span>보유 쿠폰</span>
+                        <strong>3 장</strong>
+                    </div>
+                </div>
+
+                <!-- 주문 진행 상태 (스텝퍼) -->
+                <h3 class="content-section-title">진행 중인 주문</h3>
+                <div class="order-stepper">
+                    <div class="step-item">
+                        <div class="step-icon"><span class="step-count">0</span></div>
+                        <span class="step-label">입금 대기</span>
+                    </div>
+                    <!-- 브랜드 컬러 스타일 적용 예 (진행 중인 단계) -->
+                    <div class="step-item active"> 
+                        <div class="step-icon"><span class="step-count">1</span></div>
+                        <span class="step-label">상품 준비</span>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-icon"><span class="step-count">0</span></div>
+                        <span class="step-label">배송 중</span>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-icon"><span class="step-count">0</span></div>
+                        <span class="step-label">배송 완료</span>
+                    </div>
+                </div>
+
+                <!-- 가상 주문 내역 리스트 -->
+                <h3 class="content-section-title">최근 주문 내역 <span>(최근 1개월)</span></h3>
+                <div class="cart-table-wrap" style="margin-bottom:0;">
+                    <table class="cart-table">
+                        <thead>
+                            <tr>
+                                <th>주문일자/번호</th>
+                                <th class="col-img">상품이미지</th>
+                                <th class="col-info">상품정보</th>
+                                <th class="col-qty" style="width:10%;">수량</th>
+                                <th>결제금액</th>
+                                <th>주문상태</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- 주문 1: 가상데이터 -->
+                            <tr>
+                                <td>2026.04.10<br>(260410-0001)</td>
+                                <td class="col-img">
+                                    <img src="assets/images/앰플병.png" alt="스킨1004 마다가스카르 센텔라 앰플">
+                                </td>
+                                <td class="col-info" style="text-align:center;">
+                                    <p class="cart-item-name" style="margin:0; text-align:center;">스킨1004 마다가스카르 센텔라 앰플</p>
+                                </td>
+                                <td>1</td>
+                                <td>14,900원</td>
+                                <td style="color:var(--primary-color); font-weight:600;">상품 준비 중</td>
+                            </tr>
+                            <!-- 주문 2: 가상데이터 -->
+                            <tr>
+                                <td>2026.03.25<br>(260325-0012)</td>
+                                <td class="col-img">
+                                    <img src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&q=80&w=600" alt="노리아 에센셜 매트 립스틱">
+                                </td>
+                                <td class="col-info" style="text-align:center;">
+                                    <p class="cart-item-name" style="margin:0; text-align:center;">노리아 에센셜 매트 립스틱</p>
+                                </td>
+                                <td>2</td>
+                                <td>36,000원</td>
+                                <td style="color:#777;">
+                                    배송 완료<br>
+                                    <button class="btn-write-review" id="review-btn-1" onclick="openReviewModal('노리아 에센셜 매트 립스틱', 'review-btn-1')">리뷰 작성</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- (2) 다른 탭 영역들 (임시용) -->
+            <section id="panel-benefits" class="tab-panel">
+                <h3 class="content-section-title">나의 혜택 (쿠폰/포인트)</h3>
+                <div class="empty-notice">현재 보유하신 쿠폰 및 적립금 내역이 상세하게 표시될 공간입니다.</div>
+            </section>
+
+            <section id="panel-wishlist" class="tab-panel">
+                <h3 class="content-section-title">관심 상품 목록</h3>
+                <div class="empty-notice">찜해두신 상품 내역이 없습니다. 새로운 뷰티 여정을 Noria와 함께 시작해보세요.</div>
+            </section>
+
+            <section id="panel-qna" class="tab-panel">
+                <h3 class="content-section-title">1:1 문의 내역</h3>
+                <div class="empty-notice">접수된 답변 및 문의 내역이 없습니다.</div>
+            </section>
+
+            <section id="panel-profile" class="tab-panel">
+                <h3 class="content-section-title">회원 정보 수정</h3>
+                <div class="empty-notice">고객님의 소중한 개인정보를 안전하게 보호·관리하기 위해 재확인이 필요할 수 있습니다.</div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- 5. 리뷰 작성 모달 -->
+    <div id="review-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeReviewModal()">&times;</span>
+            <h2 class="modal-title">WRITE REVIEW</h2>
+            <p id="modal-product-name" class="modal-subtitle">상품명</p>
+            
+            <div class="star-rating-box">
+                <p>상품은 만족하셨나요?</p>
+                <div class="stars" id="star-selector">
+                    <span data-value="1">★</span>
+                    <span data-value="2">★</span>
+                    <span data-value="3">★</span>
+                    <span data-value="4">★</span>
+                    <span data-value="5">★</span>
+                </div>
+            </div>
+
+            <textarea id="review-textarea" class="review-textarea" placeholder="상품에 대한 솔직한 리뷰를 작성해주세요. (최소 10자 이상)"></textarea>
+            
+            <button class="btn-submit-review" onclick="submitReview()">등록하기</button>
+        </div>
+    </div>
+
+    <!-- 4. 푸터 -->
+    <footer class="footer">
+        <div class="footer-info">
+            <h3>NORIA</h3>
+            <p>상호: 노리아 (NORIA) | 고객센터: 1588-0000</p>
+            <p>COPYRIGHT © NORIA. ALL RIGHTS RESERVED.</p>
+        </div>
+        <div class="footer-info">
+            <p>교환/반품 안내</p>
+            <p>5만원 이상 구매 시 무료배송</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/mypage.js"></script>
+</body>
+</html>

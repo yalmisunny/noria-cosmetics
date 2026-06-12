@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>노리아 브라이트닝 토너 | 상품상세</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;500;600&family=Marcellus&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .product-detail-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 5%;
+            display: flex;
+            gap: 4rem;
+        }
+
+        /* 왼쪽 갤러리 영역 */
+        .pd-gallery {
+            flex: 1;
+        }
+        .pd-main-img {
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #f8f8f8;
+            margin-bottom: 1rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            aspect-ratio: 1/1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .pd-main-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .pd-thumbnails {
+            display: flex;
+            gap: 1rem;
+        }
+        .pd-thumb {
+            width: 80px;
+            height: 80px;
+            border-radius: 6px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            opacity: 0.6;
+            transition: all 0.3s;
+            background-color: #f8f8f8;
+        }
+        .pd-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        .pd-thumb.active, .pd-thumb:hover {
+            border-color: var(--primary-color);
+            opacity: 1;
+        }
+
+        /* 오른쪽 정보 영역 */
+        .pd-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .pd-category {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .pd-title {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+        .pd-rating {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .pd-rating .stars {
+            color: #FFB800;
+        }
+        .pd-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #eaeaea;
+            padding-bottom: 1.5rem;
+        }
+
+        .pd-options {
+            margin-bottom: 2rem;
+        }
+        .qty-selector {
+            display: inline-flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: #fff;
+        }
+        .qty-btn {
+            background: none;
+            border: none;
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #555;
+            transition: background 0.3s;
+        }
+        .qty-btn:hover {
+            background: #f5f5f5;
+        }
+        .qty-input {
+            width: 50px;
+            height: 40px;
+            border: none;
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+            text-align: center;
+            font-size: 1rem;
+            outline: none;
+            background: transparent;
+        }
+
+        .pd-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            background-color: #fafafa;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+        .pd-total-price {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .pd-actions {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .btn-l {
+            flex: 1;
+            padding: 1.2rem;
+            font-size: 1.05rem;
+            font-weight: 500;
+            text-align: center;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .btn-cart {
+            background: #fff;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        .btn-cart:hover {
+            background: rgba(18, 53, 36, 0.05);
+        }
+        .btn-buy {
+            background: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            color: #fff;
+        }
+        .btn-buy:hover {
+            background: #0d271a;
+        }
+        .btn-wish {
+            width: 60px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #888;
+            transition: all 0.3s;
+        }
+        .btn-wish.active, .btn-wish:hover {
+            border-color: #e95151;
+            color: #e95151;
+            background: #fff0f0;
+        }
+
+        /* 탭 영역 */
+        .pd-tabs-section {
+            max-width: 1200px;
+            margin: 0 auto 5rem;
+            padding: 0 5%;
+        }
+        .pd-tabs {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 3rem;
+            position: sticky;
+            top: 76px;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 10;
+        }
+        .pd-tab {
+            padding: 1rem 2rem;
+            font-size: 1.05rem;
+            color: #888;
+            cursor: pointer;
+            position: relative;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .pd-tab.active {
+            color: var(--primary-color);
+        }
+        .pd-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        .tab-content.active {
+            display: block;
+        }
+
+        .detail-html {
+            text-align: center;
+            line-height: 1.8;
+            color: #444;
+        }
+        .detail-html img {
+            max-width: 100%;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .product-detail-section {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            .pd-actions {
+                flex-direction: column;
+            }
+            .btn-wish {
+                width: 100%;
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 최상단 이벤트 배너 -->
+    <div class="top-notice">
+        <span>🎉 5만원 이상 구입시 무료배송 이벤트 진행중! 🎉</span>
+    </div>
+
+    <!-- 헤더 -->
+    <header class="header">
+        <div class="logo">
+            <a href="index.html"><h1>NORIA <span class="logo-divider">|</span> <span class="logo-ko">노리아</span></h1></a>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html#about">Brand Story</a>
+            <a href="index.html#bestseller">Best Seller</a>
+            <a href="index.html#products">Beauty Collection</a>
+            <a href="index.html#reviews">Review</a>
+            <a href="event.html">Event</a>
+            <a href="cs_center.html">CS Center</a>
+        </nav>
+        <div class="header-icons">
+            <a href="login.html" title="LOGIN">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+            </a>
+            <a href="mypage.html" title="MY PAGE">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </a>
+            <a href="cart.html" id="nav-cart-link" title="CART">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                <span id="nav-cart-count" class="cart-badge">0</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- 제품 상세 영역 -->
+    <main>
+        <section class="product-detail-section">
+            <!-- 왼쪽 갤러리 -->
+            <div class="pd-gallery">
+                <div class="pd-main-img">
+                    <img id="mainImage" src="https://images.unsplash.com/photo-1608248593802-8eb3a20da3c5?auto=format&fit=crop&q=80&w=800" alt="Product Main">
+                </div>
+                <div class="pd-thumbnails">
+                    <div class="pd-thumb active" onclick="changeImage(this, 'https://images.unsplash.com/photo-1608248593802-8eb3a20da3c5?auto=format&fit=crop&q=80&w=800')">
+                        <img src="https://images.unsplash.com/photo-1608248593802-8eb3a20da3c5?auto=format&fit=crop&q=80&w=200" alt="Thumb 1">
+                    </div>
+                    <div class="pd-thumb" onclick="changeImage(this, 'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&q=80&w=800')">
+                        <img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&q=80&w=200" alt="Thumb 2">
+                    </div>
+                    <div class="pd-thumb" onclick="changeImage(this, 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=800')">
+                        <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=200" alt="Thumb 3">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 오른쪽 인포 -->
+            <div class="pd-info">
+                <div class="pd-category">SKINCARE / TONING</div>
+                <h1 class="pd-title" id="pdTitle">노리아 브라이트닝 토너</h1>
+                
+                <div class="pd-rating">
+                    <span class="stars">★★★★★</span>
+                    <span style="font-weight: 500;">4.8</span>
+                    <span>(128개의 리뷰)</span>
+                </div>
+
+                <div class="pd-price" id="pdPrice" data-price="22000">22,000원</div>
+
+                <div class="pd-options">
+                    <div style="margin-bottom: 0.5rem; font-size: 0.95rem; color: #555;">수량</div>
+                    <div class="qty-selector">
+                        <button class="qty-btn" type="button" onclick="updateQty(-1)">-</button>
+                        <input type="text" class="qty-input" id="qtyInput" value="1" readonly>
+                        <button class="qty-btn" type="button" onclick="updateQty(1)">+</button>
+                    </div>
+                </div>
+
+                <div class="pd-total">
+                    <span>총 상품금액</span>
+                    <span class="pd-total-price" id="totalPrice">22,000원</span>
+                </div>
+
+                <div class="pd-actions">
+                    <button class="btn-wish" onclick="this.classList.toggle('active')" title="찜하기">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    </button>
+                    <button class="btn-l btn-cart" onclick="addCurrentToCart()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                        장바구니 담기
+                    </button>
+                    <button class="btn-l btn-buy" onclick="buyNow()">바로 구매하기</button>
+                </div>
+                
+                <div style="color: #777; font-size: 0.9rem; background: #f9f9f9; padding: 1rem; border-radius: 6px;">
+                    🚚 <strong>배송 안내:</strong> 50,000원 이상 구매 시 무료배송<br>평일 오후 2시 이전 결제 시 당일 출고
+                </div>
+            </div>
+        </section>
+
+        <!-- 하단 탭 & 컨텐츠 -->
+        <section class="pd-tabs-section">
+            <div class="pd-tabs">
+                <div class="pd-tab active" data-target="tab-desc">상품상세정보</div>
+                <div class="pd-tab" data-target="tab-info">전성분 안내</div>
+                <div class="pd-tab" data-target="tab-review">유저 리뷰 (128)</div>
+            </div>
+
+            <!-- 상세 탭 컨텐츠 -->
+            <div class="tab-content active" id="tab-desc">
+                <div class="detail-html">
+                    <h3>유리알처럼 맑고 투명한 피부의 비결</h3>
+                    <p style="margin-bottom: 2rem; color: #666;">
+                        매일매일 닦아낼수록 투명해지는 피부 결.<br>
+                        노리아 브라이트닝 토너는 피부의 묵은 각질을 부드럽게 정돈하고,<br>깊숙한 곳까지 생기를 채워줍니다.
+                    </p>
+                    <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=1200" alt="상세 컷">
+                    <div style="text-align: left; background: #fafafa; padding: 2rem; max-width: 800px; margin: 0 auto; border-radius: 8px;">
+                        <h4 style="margin-bottom: 1rem; color: var(--primary-color);">💡 추천 포인트</h4>
+                        <ul style="padding-left: 1.5rem; line-height: 2;">
+                            <li>칙칙해진 피부 톤업이 필요할 때</li>
+                            <li>세안 후 남은 잔여물을 깔끔하게 닦아내고 싶을 때</li>
+                            <li>스킨케어 첫 단계에서 수분길을 열어주고 싶을 때</li>
+                            <li>끈적임 없이 산뜻한 물토너를 찾고 계신 분</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 전성분 탭 컨텐츠 -->
+            <div class="tab-content" id="tab-info" style="color: #555; max-width: 900px; margin: 0 auto;">
+                <h3 style="margin-bottom: 1.5rem; color: var(--text-dark);">제품 성분 정보</h3>
+                <p style="line-height: 1.8; word-break: keep-all;">
+                    정제수, 부틸렌글라이콜, 나이아신아마이드(미백기능성), 1,2-헥산다이올, 글리세린, 병풀추출물, 알란토인, 판테놀, 소듐하이알루로네이트, 캐모마일꽃추출물, 녹차추출물, 에틸헥실글리세린, 다이소듐이디티에이, 시트릭애씨드, 소듐시트레이트.
+                </p>
+                <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px dotted #ccc; font-size: 0.9rem;">
+                    * 알레르기 유발 주의 성분 0개 (무향료, 무색소)<br>
+                    * 사용 시 주의사항: 1) 화장품 사용 시 또는 사용 후 직사광선에 의하여 사용부위가 붉은 반점, 부어오름 등의 이상 증상이나 부작용이 있는 경우 전문의 등과 상담할 것. 2) 상처가 있는 부위 등에는 사용을 자제할 것.
+                </div>
+            </div>
+
+            <!-- 리뷰 탭 컨텐츠 -->
+            <div class="tab-content" id="tab-review">
+                <div class="reviews-section" style="padding: 0;">
+                    <div class="review-grid" style="margin: 0; display: grid; grid-template-columns: 1fr; gap: 1rem;">
+                        <!-- 리뷰 1 -->
+                        <div class="review-card" style="padding: 20px;">
+                            <div class="review-header" style="margin-bottom: 10px;">
+                                <div class="review-stars" style="font-size: 1rem;">★★★★★</div>
+                                <div class="review-date">2026.04.10 | park***</div>
+                            </div>
+                            <h4 class="review-title" style="font-size: 1.05rem;">피부 결 정돈에 최고예요</h4>
+                            <p class="review-text" style="font-size: 0.9rem;">닦토로 맨날 쓰고 있는데 벌써 세 통째입니다. 피부톤이 한결 맑아진 느낌이고 트러블도 거의 안 올라와요. 강추!</p>
+                        </div>
+                        <!-- 리뷰 2 -->
+                        <div class="review-card" style="padding: 20px;">
+                            <div class="review-header" style="margin-bottom: 10px;">
+                                <div class="review-stars" style="font-size: 1rem;">★★★★☆</div>
+                                <div class="review-date">2026.04.08 | lhj1***</div>
+                            </div>
+                            <h4 class="review-title" style="font-size: 1.05rem;">무난하게 쓰기 좋아요</h4>
+                            <p class="review-text" style="font-size: 0.9rem;">성분이 순해서 민감성인데도 잘 맞네요. 용량이 조금 더 큰 대용량 버전도 나왔으면 좋겠습니다~</p>
+                        </div>
+                    </div>
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <button class="btn-l btn-cart" style="display: inline-block; padding: 0.8rem 2rem;">리뷰 더보기</button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="footer-info">
+            <h3>NORIA</h3>
+            <p>상호: 노리아 (NORIA) | 대표: 김노리 | 사업자등록번호: 123-45-67890</p>
+            <p>고객센터: 1588-0000 (평일 10:00 - 17:00 / 주말 및 공휴일 휴무)</p>
+            <p>COPYRIGHT © NORIA. ALL RIGHTS RESERVED.</p>
+        </div>
+        <div class="footer-info">
+            <p><a href="#">이용약관</a> | <a href="#" style="font-weight: bold; color: var(--text-dark);">개인정보처리방침</a></p>
+            <p>교환/반품 안내</p>
+            <p>5만원 이상 구매 시 무료배송</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // 수량 스텝 
+        const unitPrice = 22000;
+        const qtyInput = document.getElementById('qtyInput');
+        const totalPriceEl = document.getElementById('totalPrice');
+
+        function updateQty(change) {
+            let currentQty = parseInt(qtyInput.value);
+            currentQty += change;
+            if (currentQty < 1) currentQty = 1;
+            if (currentQty > 10) {
+                alert('최대 구매 수량은 10개입니다.');
+                return;
+            }
+            qtyInput.value = currentQty;
+            totalPriceEl.textContent = (currentQty * unitPrice).toLocaleString() + '원';
+        }
+
+        // 이미지 전환
+        function changeImage(element, imgUrl) {
+            document.querySelectorAll('.pd-thumb').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+            
+            const mainImg = document.getElementById('mainImage');
+            mainImg.style.opacity = 0;
+            setTimeout(() => {
+                mainImg.src = imgUrl;
+                mainImg.style.opacity = 1;
+            }, 200);
+        }
+
+        // 장바구니 담기 연동
+        function addCurrentToCart() {
+            const product = {
+                id: 'p4', // 예시로 토너 ID 하드코딩
+                name: document.getElementById('pdTitle').innerText,
+                price: unitPrice,
+                image: document.getElementById('mainImage').src,
+                quantity: parseInt(qtyInput.value)
+            };
+            addToCart(product);
+        }
+
+        function buyNow() {
+            addCurrentToCart();
+            window.location.href = 'cart.html';
+        }
+
+        // 탭 스크립트
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.pd-tab');
+            const contents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const target = tab.getAttribute('data-target');
+                    
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+
+                    contents.forEach(c => {
+                        c.classList.remove('active');
+                        if(c.id === target) {
+                            c.classList.add('active');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
